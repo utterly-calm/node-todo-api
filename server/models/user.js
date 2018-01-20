@@ -55,7 +55,8 @@ UserSchema.methods.generateAuthToken = function() {
     )
     .toString();
 
-  user.tokens.push({ access, token });
+  // user.tokens.push({ access, token });
+  user.tokens = user.tokens.concat([{access, token}]);
   return user.save().then(() => {
     return token;
   });
